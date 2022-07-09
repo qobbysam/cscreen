@@ -12,14 +12,14 @@ services:
     build: .
     volumes:
      - .:/app/
-     - ./admissiontool/staticfiles:/app/cscreen/staticfiles/
-     - ./admissiontool/static:/app/cscreen/static/
+     - ./cscreen/staticfiles:/app/cscreen/staticfiles/
+     - ./cscreen/static:/app/cscreen/static/
     command: > 
         sh -c "
-              python cscreen/manage.py collectstatic --noinput  --settings=cscreen.settings.production &&
-              python cscreen/manage.py migrate --settings=cscreen.settings.production &&
-              python cscreen/manage.py initsu  --settings=cscreen.settings.production &&
-              python cscreen/manage.py runserver 0.0.0.0:8500 --settings=cscreen.settings.production"
+              python manage.py collectstatic --noinput  --settings=cscreen.settings.production &&
+              python manage.py migrate --settings=cscreen.settings.production &&
+              python manage.py initsu  --settings=cscreen.settings.production &&
+              python manage.py runserver 0.0.0.0:8500 --settings=cscreen.settings.production"
     
     ports:
         - "8500:8500"    

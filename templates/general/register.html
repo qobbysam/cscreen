@@ -1,0 +1,38 @@
+
+{% extends 'general/generalbase.html' %}
+
+
+{%block genbody %}
+<section class="position-relative py-4 py-xl-5">
+    <div class="container position-relative">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2 class="font-weight-bold">Register</h2>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6 col-xl-4">
+                <div class="card">
+                    <div class="card-body text-center d-flex flex-column align-items-center">
+                        <form method="post">
+                            <div style="padding-bottom: 10px;padding-top: 10px;"><input class="form-control" type="text" name="name" placeholder="Name"></div>
+                            <div style="padding-bottom: 10px;padding-top: 10px;"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+                            <div style="padding-bottom: 10px;padding-top: 10px;"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+                            <div style="padding-bottom: 10px;padding-top: 10px;"><input class="form-control" type="password" name="passwordconfirm" placeholder="Confirm Password"></div>
+                            <div><select class="form-control" name="account">
+                                    <option value="su" selected="">SuSu</option>
+                                    <option value="of" selected="">Office</option>
+                                    <option value="cl">Client</option>
+                                </select></div>
+                        </form>
+                        <div style="padding-top: 10px;"><button class="btn btn-primary" type="button">Register</button></div>
+                        <div style="padding-top: 10px;"><a class="btn btn-primary" type="button" href="/">Home</a></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End: Login Form Basic -->
+
+{% endblock %}

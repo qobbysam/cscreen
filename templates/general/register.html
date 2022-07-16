@@ -1,5 +1,5 @@
 
-{% extends 'general/generalbase.html' %}
+{% extends 'generalbase.html' %}
 
 
 {%block genbody %}
@@ -14,18 +14,27 @@
             <div class="col-md-6 col-xl-4">
                 <div class="card">
                     <div class="card-body text-center d-flex flex-column align-items-center">
-                        <form method="post">
+                        <form method="post" action="/register/">
+                            {% csrf_token %}
                             <div style="padding-bottom: 10px;padding-top: 10px;"><input class="form-control" type="text" name="name" placeholder="Name"></div>
                             <div style="padding-bottom: 10px;padding-top: 10px;"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-                            <div style="padding-bottom: 10px;padding-top: 10px;"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-                            <div style="padding-bottom: 10px;padding-top: 10px;"><input class="form-control" type="password" name="passwordconfirm" placeholder="Confirm Password"></div>
+                            <div style="padding-bottom: 10px;padding-top: 10px;"><input class="form-control" type="password" name="password1" placeholder="Password"></div>
+                            <div style="padding-bottom: 10px;padding-top: 10px;"><input class="form-control" type="password" name="password2" placeholder="Confirm Password"></div>
                             <div><select class="form-control" name="account">
-                                    <option value="su" selected="">SuSu</option>
-                                    <option value="of" selected="">Office</option>
-                                    <option value="cl">Client</option>
+                                    <option value="susu" selected="">SuSu</option>
+                                    <option value="office" selected="">Office</option>
+                                    <option value="client">Client</option>
                                 </select></div>
+                            <div style="padding-top: 10px;"><button class="btn btn-primary" type="submit">Register</button></div>
+
                         </form>
-                        <div style="padding-top: 10px;"><button class="btn btn-primary" type="button">Register</button></div>
+                        {{ message }}
+
+                        {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                        <p>{{error}}</p>
+                        {%endfor%}
+                        {%endfor%}
                         <div style="padding-top: 10px;"><a class="btn btn-primary" type="button" href="/">Home</a></div>
 
                     </div>

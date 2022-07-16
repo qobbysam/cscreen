@@ -6,7 +6,7 @@ from general import views
 urlpatterns = [
     path('', views.HomepageView.as_view(), name="genHome" ),
     path('register/', views.registerView, name="genRegister"),
-    path('login/', views.LoginView.as_view(), name="genLogin"),
+    path('login/', views.loginview, name="genLogin"),
     path('logout/', views.logoutView, name="genLogout"),
     path('susu/', include('susu.urls')),
     path('client/', include('client.urls')),

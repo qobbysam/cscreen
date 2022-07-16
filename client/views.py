@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from django.views.generic.base import TemplateView
 
 # Create your views here.
 
 
-def clientHomeView(request):
-    pass
+class ClientHomeView(TemplateView):
+    template_name = 'client/clienthome.html'
+

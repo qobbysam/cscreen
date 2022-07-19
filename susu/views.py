@@ -5,4 +5,4 @@ from django.views.generic.base import TemplateView
 
 
 class SusuHomeView(TemplateView):
-    template_name = 'susu/susuhome.html'
+    template_name = 'susu/dashboard/index.html'

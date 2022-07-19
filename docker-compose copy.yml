@@ -1,0 +1,37 @@
+version: '3.9'
+services:
+  db:
+    image: postgres
+    volumes:
+     - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+  web:
+    build: .
+    volumes:
+     - .:/app/
+     - ./cscreen/staticfiles:/app/cscreen/staticfiles/
+     - ./cscreen/static:/app/cscreen/static/
+    command: > 
+        sh -c "
+              python manage.py collectstatic --noinput  --settings=cscreen.settings.production &&
+              python manage.py migrate --settings=cscreen.settings.production &&
+              python manage.py initsu --settings=cscreen.settings.production &&
+              python manage.py runserver 0.0.0.0:8500 --settings=cscreen.settings.production"
+    
+    ports:
+        - "8500:8500"    
+    environment:
+      - ALLOWED_HOSTS
+      - SECRET_KEY
+      - DJANGO_ADMIN_USERNAME
+      - DJANGO_ADMIN_PASSWORD
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_HOST
+      - POSTGRES_PORT
+    depends_on:
+      - db

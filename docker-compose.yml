@@ -8,6 +8,8 @@ services:
       - POSTGRES_DB
       - POSTGRES_USER
       - POSTGRES_PASSWORD
+    ports:
+      - "5433:5433"
   web:
     build: .
     volumes:
